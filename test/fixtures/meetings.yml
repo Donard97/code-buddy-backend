@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  color: MyString
+  image: MyString
+  link: MyString
+  attendee_limit: MyString
+  user: one
+  meeting_type: one
+
+two:
+  title: MyString
+  description: MyString
+  color: MyString
+  image: MyString
+  link: MyString
+  attendee_limit: MyString
+  user: two
+  meeting_type: two

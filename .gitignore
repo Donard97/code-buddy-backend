@@ -31,3 +31,8 @@
 # Ignore node modules
 
 /node_modules
+
+
+#Ignore database config
+
+/database.yml

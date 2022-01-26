@@ -32,10 +32,8 @@ class MeetingsController < ApplicationController
   def destroy
     meeting = Meeting.find(params[:id])
     meeting.destroy
-    if meeting.destroy!
-      render json: { message: 'Meeting has been deleted succesfully!', meeting: meeting.title }, adapter: :json_api,
-             status: 200
-    end
+    render json: { message: 'Meeting has been deleted succesfully!', meeting: meeting.title }, adapter: :json_api,
+           status: 200
   end
 
   def reservations

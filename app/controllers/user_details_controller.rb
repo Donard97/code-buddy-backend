@@ -4,9 +4,9 @@ class UserDetailsController < ApplicationController
     render json: user, adapter: :json_api, status: 200
   end
 
-  def show
-    user_detail = UserDetail.includes(:user).find(params[:id])
-  end
+  # def show
+  #   user_detail = UserDetail.includes(:user).find(params[:id])
+  # end
 
   def create
     user_detail = UserDetail.create(user_id: params[:user_id], full_name: params[:full_name], avatar: params[:avatar],
@@ -31,10 +31,8 @@ class UserDetailsController < ApplicationController
     user_detail = UserDetail.find(params[:id])
     user_detail.destroy
     user_name = User.find(user_detail.user_id).user_name
-    if user_detail.destroy!
-      render json: { message: 'User detail has been deleted succesfully!', user_name: user_name }, adapter: :json_api,
-             status: 200
-    end
+    render json: { message: 'User detail has been deleted succesfully!', user_name: user_name }, adapter: :json_api,
+           status: 200
   end
 
   def meetings

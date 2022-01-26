@@ -10,13 +10,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.find(params[:id])
+    user = User.create(user_name: params[:user_name])
     render json: user, adapter: :json_api, status: 200 if user.save!
   end
 
   def update
     user = User.find(params[:id])
-    render json: user, adapter: :json_api, status: 200 if user.update(user_params)
+
+    respond_to do |format|
+      if user.update(user_name: params[:user_name])
+        format.json {  render json: user, status: :ok, location: user }
+      else
+        format.json { render json: user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
@@ -28,6 +35,7 @@ class UsersController < ApplicationController
   private
 
   def record_not_found
-    render json: { message: 'Record Not Found!'}, adapter: :json_api, status: 404
+    render json: { message: 'Record Not Found!' }, adapter: :json_api, status: 404
   end
+
 end

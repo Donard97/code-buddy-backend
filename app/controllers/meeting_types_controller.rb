@@ -33,4 +33,9 @@ class MeetingTypesController < ApplicationController
     meeting_type.destroy
     render json: {message: "Meeting type has been deleted succesfully!", meeting_type: meeting_type.name}, adapter: :json_api, status: 200 if meeting_type.destroy!
   end
+
+  def meetings
+    meetings = MeetingType.find(params[:meeting_type_id]).meetings
+    render json: meetings, adapter: :json_api, status: 200
+  end
 end

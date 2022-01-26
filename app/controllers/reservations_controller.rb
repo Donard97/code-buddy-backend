@@ -12,6 +12,9 @@ class ReservationsController < ApplicationController
   def destroy
     reservation = Reservation.find(params[:id])
     reservation.destroy
-    render json: {message: "Reservation has been deleted succesfully!", reservation: reservation.meeting.title}, adapter: :json_api, status: 200 if reservation.destroy!
+    if reservation.destroy!
+      render json: { message: 'Reservation has been deleted succesfully!', reservation: reservation.meeting.title },
+             adapter: :json_api, status: 200
+    end
   end
 end

@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if user.update(user_name: params[:user_name])
-        format.json {  render json: user, status: :ok, location: user }
+        format.json { render json: user, status: :ok, location: user }
       else
         format.json { render json: user.errors, status: :unprocessable_entity }
       end
@@ -29,6 +29,9 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.destroy
-    render json: {message: "User has been deleted succesfully!", user_name: user.user_name}, adapter: :json_api, status: 200 if user.destroy!
+    if user.destroy!
+      render json: { message: 'User has been deleted succesfully!', user_name: user.user_name }, adapter: :json_api,
+             status: 200
+    end
   end
 end

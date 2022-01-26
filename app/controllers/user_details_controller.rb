@@ -19,8 +19,8 @@ class UserDetailsController < ApplicationController
 
     respond_to do |format|
       if user_detail.update(full_name: params[:full_name], avatar: params[:avatar],
-        birthday: params[:birthday])
-        format.json {  render json: user_detail, status: :ok }
+                            birthday: params[:birthday])
+        format.json { render json: user_detail, status: :ok }
       else
         format.json { render json: user_detail.errors, status: :unprocessable_entity }
       end
@@ -31,7 +31,10 @@ class UserDetailsController < ApplicationController
     user_detail = UserDetail.find(params[:id])
     user_detail.destroy
     user_name = User.find(user_detail.user_id).user_name
-    render json: {message: "User detail has been deleted succesfully!", user_name: user_name}, adapter: :json_api, status: 200 if user_detail.destroy!
+    if user_detail.destroy!
+      render json: { message: 'User detail has been deleted succesfully!', user_name: user_name }, adapter: :json_api,
+             status: 200
+    end
   end
 
   def meetings

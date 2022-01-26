@@ -20,8 +20,8 @@ class MeetingTypesController < ApplicationController
 
     respond_to do |format|
       if meeting_type.update(name: params[:name], color: params[:color], image: params[:image],
-        icon: params[:icon])
-        format.json {  render json: meeting_type, status: :ok }
+                             icon: params[:icon])
+        format.json { render json: meeting_type, status: :ok }
       else
         format.json { render json: meeting_type.errors, status: :unprocessable_entity }
       end
@@ -31,7 +31,10 @@ class MeetingTypesController < ApplicationController
   def destroy
     meeting_type = MeetingType.find(params[:id])
     meeting_type.destroy
-    render json: {message: "Meeting type has been deleted succesfully!", meeting_type: meeting_type.name}, adapter: :json_api, status: 200 if meeting_type.destroy!
+    if meeting_type.destroy!
+      render json: { message: 'Meeting type has been deleted succesfully!', meeting_type: meeting_type.name },
+             adapter: :json_api, status: 200
+    end
   end
 
   def meetings

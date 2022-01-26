@@ -29,13 +29,6 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.destroy
-    render json: user, adapter: :json_api, status: 200 if user.destroy!
+    render json: {message: "User has been deleted succesfully!", user_name: user.user_name}, adapter: :json_api, status: 200 if user.destroy!
   end
-
-  private
-
-  def record_not_found
-    render json: { message: 'Record Not Found!' }, adapter: :json_api, status: 404
-  end
-
 end

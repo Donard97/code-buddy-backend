@@ -1,27 +1,36 @@
 class UserDetailsController < ApplicationController
   def index
-    user = UserDetail.includes(:user).find(params[:user_id])
+    user = UserDetail.includes(:user).all
     render json: user, adapter: :json_api, status: 200
   end
 
   def show
-    user_details = UserDetails.find(params[:user_id])
-    render json: user_details, adapter: :json_api, status: 200
+    user_detail = UserDetail.includes(:user).find(params[:id])
   end
 
   def create
-    user_details = UserDetails.find(params[:user_id])
-    render json: user_details, adapter: :json_api, status: 200 if user.save!
+    user_detail = UserDetail.create(user_id: params[:user_id], full_name: params[:full_name], avatar: params[:avatar],
+                                    birthday: params[:birthday])
+    render json: user_detail, adapter: :json_api, status: 200 if user_detail.save!
   end
 
   def update
-    user_details = UserDetails.find(params[:user_id])
-    render json: user_details, adapter: :json_api, status: 200 if user.update(user_params)
+    user_detail = UserDetail.find(params[:id])
+
+    respond_to do |format|
+      if user_detail.update(full_name: params[:full_name], avatar: params[:avatar],
+        birthday: params[:birthday])
+        format.json {  render json: user_detail, status: :ok }
+      else
+        format.json { render json: user_detail.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
-    user_details = UserDetails.find(params[:user_id])
-    user_details.destroy
-    render json: user_details, adapter: :json_api, status: 200 if user.destroy!
+    user_detail = UserDetail.find(params[:id])
+    user_detail.destroy
+    user_name = User.find(user_detail.user_id).user_name
+    render json: {message: "User detail has been deleted succesfully!", user_name: user_name}, adapter: :json_api, status: 200 if user_detail.destroy!
   end
 end

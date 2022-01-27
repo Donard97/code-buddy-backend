@@ -15,4 +15,8 @@ RSpec.describe User, type: :model do
         subject.user_name = 'abc123456789123456789'
         expect(subject).to_not be_valid
     end
+    it 'user_name can not contain white spaces' do
+        subject.user_name = 'ahmad zia'
+        expect(subject).to_not be_valid
+    end
 end

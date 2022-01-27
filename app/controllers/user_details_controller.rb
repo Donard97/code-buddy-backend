@@ -23,14 +23,6 @@ class UserDetailsController < ApplicationController
     end
   end
 
-  def destroy
-    user_detail = UserDetail.find(params[:id])
-    user_detail.destroy
-    user_name = User.find(user_detail.user_id).user_name
-    render json: { message: 'User detail has been deleted succesfully!', user_name: user_name }, adapter: :json_api,
-           status: 200
-  end
-
   def meetings
     meetings = User.find(params[:user_id]).meetings
     render json: meetings, adapter: :json_api, status: 200

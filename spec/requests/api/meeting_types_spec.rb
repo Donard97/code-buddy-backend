@@ -12,22 +12,8 @@ RSpec.describe "Api::MeetingTypes", type: :request do
 
   describe 'POST /create' do
     it 'create a new meeting type' do
-      post '/meeting_types?name=Probem Solving'
-      expect(response.body).to include('Probem Solving')
-    end
-  end
-
-  #  describe 'PUT /update' do
-  #   it 'update the user' do
-  #     put "/meeting_types/1?name=Probem Solving"
-  #     expect(response.body).to include('Probem Solving')
-  #   end
-  # end
-
-  describe 'Delete /delete' do
-    it 'delete the meeting type' do
-      delete "/meeting_types/#{meeting_type.id}"
-      expect(response.status).to eq 200
+      post '/meeting_types?name=ProbemSolving'
+      expect(response.body).to include('ProbemSolving')
     end
   end
 end

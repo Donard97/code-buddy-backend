@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
+RSpec.describe 'Api::Users', type: :request do
   user = User.create(user_name: "Donard")
 
   describe 'GET /users' do
@@ -16,13 +16,6 @@ RSpec.describe 'Users', type: :request do
       expect(response.body).to include('Donard')
     end
   end
-
-  # describe 'PUT /update' do
-  #   it 'update the user' do
-  #     put "/users/1?user_name=Ahmad"
-  #     expect(response.body)..to include('Ahmad')
-  #   end
-  # end
 
   describe 'Delete /delete' do
     it 'delete the user' do

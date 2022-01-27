@@ -33,6 +33,6 @@
 /node_modules
 
 
-#Ignore database config
+# Ignore database configuration
 
-/database.yml
+/config/database.yml

@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if user.update(user_name: params[:user_name])
-        format.json { render json: user, status: :ok, location: user }
+        format.json { render json: user, status: :ok }
       else
         format.json { render json: user.errors, status: :unprocessable_entity }
       end

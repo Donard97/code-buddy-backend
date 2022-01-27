@@ -4,10 +4,6 @@ class UserDetailsController < ApplicationController
     render json: user, adapter: :json_api, status: 200
   end
 
-  # def show
-  #   user_detail = UserDetail.includes(:user).find(params[:id])
-  # end
-
   def create
     user_detail = UserDetail.create(user_id: params[:user_id], full_name: params[:full_name], avatar: params[:avatar],
                                     birthday: params[:birthday])

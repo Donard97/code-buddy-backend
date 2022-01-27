@@ -20,7 +20,7 @@ RSpec.describe 'Users', type: :request do
   # describe 'PUT /update' do
   #   it 'update the user' do
   #     put "/users/1?user_name=Ahmad"
-  #     expect(response.body).to eq "Ahmad"
+  #     expect(response.body)..to include('Ahmad')
   #   end
   # end
 

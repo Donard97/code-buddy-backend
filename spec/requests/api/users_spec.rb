@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Api::Users', type: :request do
-  user = User.create(user_name: "Donard")
+  user = User.create(user_name: 'Donard')
 
   describe 'GET /users' do
     it 'works! (now write some real specs)' do

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Api::Reservations", type: :request do
-  describe "GET /api/reservations" do
-    it "works! (now write some real specs)" do
+RSpec.describe 'Api::Reservations', type: :request do
+  describe 'GET /api/reservations' do
+    it 'works! (now write some real specs)' do
       get '/users/1/reservations'
       expect(response).to have_http_status(200)
     end

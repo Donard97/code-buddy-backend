@@ -7,11 +7,11 @@ RSpec.describe MeetingType, type: :model do
         subject.name = nil
         expect(subject).to_not be_valid
     end
-    it 'MeetingType should be at least 4 charachters' do
+    it 'MeetingType title should be at least 4 charachters' do
         subject.name = 'abc'
         expect(subject).to_not be_valid
     end
-    it 'MeetingType should be at most 20 charachters' do
+    it 'MeetingType title should be at most 20 charachters' do
         subject.name = 'abc123456789123456789'
         expect(subject).to_not be_valid
     end

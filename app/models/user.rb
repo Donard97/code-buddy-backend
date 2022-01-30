@@ -4,4 +4,8 @@ class User < ApplicationRecord
   has_many :reservations
   validates :user_name, presence: true, uniqueness: true, length: { in: 4..20 }
   validates :user_name, format: { without: /\s/, message: 'cannot contain whitespace' }
+  before_save :downcase_fields
+  def downcase_fields
+    self.user_name.downcase!
+  end
 end

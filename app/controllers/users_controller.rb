@@ -4,6 +4,19 @@ class UsersController < ApplicationController
     render json: users, adapter: :json_api, status: 200
   end
 
+  def login_register
+    user_name = params[:user_name]
+    if User.where(user_name: user_name).exists?
+      # login
+      user = User.find_by(:user_name => user_name)
+      render json: user, adapter: :json_api, status: 200 if user
+    else
+      # create new user
+      user = User.create(user_name: user_name)
+      render json: user, adapter: :json_api, status: 200 if user.save!
+    end
+  end
+
   def show
     user = User.find(params[:id])
     render json: user, adapter: :json_api, status: 200

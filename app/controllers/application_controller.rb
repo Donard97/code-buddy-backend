@@ -3,21 +3,26 @@ class ApplicationController < ActionController::API
 
   # CUSTOM EXCEPTION HANDLING
   rescue_from Exception do |e|
-    error_info = format_error("internal-server-error",e);
-    render :json => error_info.to_json, :status => 500
+    error_info = format_error("Internal Server Error",e);
+    render :json => error_info.to_json, :status => :internal_server_error
   end
 
   rescue_from ActiveRecord::RecordInvalid do |e|
-    error_info = format_error("RecordInvalid",e);
-    render :json => error_info.to_json, :status => 406
+    error_info = format_error("Record Invalid",e);
+    error_info.push record => e.record.errors;
+    render :json => error_info.to_json, :status => :not_acceptable
   end
 
-  def format_error(error, e)
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    error_info = format_error("Record not found",e);
+    render :json => error_info.to_json, :status => :not_acceptable
+  end
+
+  def format_error(title,e)
     error_info = {
-      :error => error,
+      :error => "#{title}",
       :message => "#{e.message}",
-      :class => "#{e.class.name}",
-      :record => e.record.errors,
+      :exception => "#{e.class.name} : #{e.message}",
     }
     error_info
   end

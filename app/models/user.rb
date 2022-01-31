@@ -6,6 +6,6 @@ class User < ApplicationRecord
   validates :user_name, format: { without: /\s/, message: 'cannot contain whitespace' }
   before_save :downcase_fields
   def downcase_fields
-    self.user_name.downcase!
+    user_name.downcase!
   end
 end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if User.where(user_name: user_name).exists?
       # login
       user = User.find_by(user_name: user_name)
-      render json: users, adapter: :json_api, status: :ok if user
+      render json: user, adapter: :json_api, status: :ok if user
     else
       # create new user
       user = User.create(user_name: user_name)

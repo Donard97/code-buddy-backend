@@ -14,7 +14,7 @@
 
 ## Deployment
 
-- Click [here]() to view the documentation of the Code Buddy API.
+- Click [here](https://codebuddy-me.herokuapp.com/) to view the documentation of the Code Buddy API.
 
 
 ## Kanban board

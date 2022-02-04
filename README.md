@@ -14,14 +14,14 @@
 
 ## Deployment
 
-- Click [here]() to view the documentation of the Code Buddy API.
+- Click [here](http://localhost:3000/apipie) to view the documentation of the Code Buddy API.
 
 
 ## Kanban board
 
 - Click this [link](https://github.com/Donard97/code-buddy-backend/projects/1) to view the Kanban board that was used while building this app.
 
-- Click [here]() to view the initial state of our Kanban board.
+- Click [here](https://user-images.githubusercontent.com/74506933/150403327-e2696816-3a09-41f5-b49f-a012d8cec8bb.png) to view the initial state of our Kanban board.
 
 - At the end of this project, there are two(2) people in the team.
 

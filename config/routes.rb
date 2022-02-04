@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   apipie
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
-  root "users#index"
+  root "apipie/apipies#index"
   resources :meetings do 
     get 'reservations', to: 'meetings#reservations'
   end

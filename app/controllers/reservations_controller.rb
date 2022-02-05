@@ -1,8 +1,14 @@
 class ReservationsController < ApplicationController
   api :GET, '/users/:user_id/reservations', "This is index view for user's reservations"
   def index
-    reservations = User.find(params[:user_id]).reservations
-    render json: reservations, adapter: :json_api, status: :ok
+    user = User.find(params[:user_id])
+    reservations = user.reservations
+    meetings = []
+    reservations.each do |reserve|
+      meeting = Meeting.find(reserve.meeting_id)
+      meetings.push meeting
+    end
+    render json: meetings, adapter: :json_api, status: :ok
   end
 
   api :POST, '/users/:user_id/reservations', 'Create a new reservation for meeting'

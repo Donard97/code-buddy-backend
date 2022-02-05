@@ -4,6 +4,7 @@
 
 > This project is about creating API end point using Ruby on Rails and deploying the API on heroku. The API has meetings and reservations endpoints. The API is used in our front end React project which is based on an app to book a meeting to learn or for coding session with your buddy. 
 
+[HERE](https://github.com/ahzia/code-buddy-frontend) you have the link for frontend repository.
 
 ## The learning objective of this project are
 
@@ -90,6 +91,6 @@ Feel free to check the [issues page](https://github.com/Donard97/code-buddy-back
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-- Hats off to [Murat Korkmaz](https://www.behance.net/muratk) for designing the awesome template that was used. ✨
-- Microverse for giving us this chance
+- Hat tip to anyone whose code was a source of inspiration.
+- [Microverse](https://github.com/microverseinc) for giving us this chance
 - The amazing code reviewers for making us improve every day 👍

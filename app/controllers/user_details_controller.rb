@@ -1,13 +1,13 @@
 class UserDetailsController < ApplicationController
   def index
     user = UserDetail.includes(:user).all
-    render json: user, adapter: :json_api, status: 200
+    render json: user, adapter: :json_api, status: :ok
   end
 
   def create
     user_detail = UserDetail.create(user_id: params[:user_id], full_name: params[:full_name], avatar: params[:avatar],
                                     birthday: params[:birthday])
-    render json: user_detail, adapter: :json_api, status: 200 if user_detail.save!
+    render json: user_detail, adapter: :json_api, status: :ok if user_detail.save!
   end
 
   def update
@@ -18,7 +18,7 @@ class UserDetailsController < ApplicationController
                             birthday: params[:birthday])
         format.json { render json: user_detail, status: :ok }
       else
-        format.json { render json: user_detail.errors, status: :unprocessable_entity }
+        format.json { render json: format_error('Unprocessable entity', user_detail.errors), status: :unprocessable_entity }
       end
     end
   end

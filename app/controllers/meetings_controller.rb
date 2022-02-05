@@ -1,18 +1,18 @@
 class MeetingsController < ApplicationController
   def index
     meetings = Meeting.all
-    render json: meetings, adapter: :json_api, status: 200
+    render json: meetings, adapter: :json_api, status: :ok
   end
 
   def show
     meeting = Meeting.find(params[:id])
-    render json: meeting, adapter: :json_api, status: 200
+    render json: meeting, adapter: :json_api, status: :ok
   end
 
   def create
     meeting = Meeting.create(user_id: params[:user_id], meeting_type_id: params[:meeting_type_id], title: params[:title], description: params[:description],
                              color: params[:color], image: params[:image], link: params[:link], attendee_limit: params[:attendee_limit])
-    render json: meeting, adapter: :json_api, status: 200 if meeting.save!
+    render json: meeting, adapter: :json_api, status: :ok if meeting.save!
   end
 
   def update
@@ -24,7 +24,7 @@ class MeetingsController < ApplicationController
 
         format.json { render json: meeting, status: :ok }
       else
-        format.json { render json: meeting.errors, status: :unprocessable_entity }
+        format.json { render json: format_error('Unprocessable entity', meeting.errors), status: :unprocessable_entity }
       end
     end
   end
@@ -33,11 +33,11 @@ class MeetingsController < ApplicationController
     meeting = Meeting.find(params[:id])
     meeting.destroy
     render json: { message: 'Meeting has been deleted succesfully!', meeting: meeting.title }, adapter: :json_api,
-           status: 200
+           status: :ok
   end
 
   def reservations
     reservations = Reservation.find(meeting_id: params[:id])
-    render json: reservations, adapter: :json_api, status: 200
+    render json: reservations, adapter: :json_api, status: :ok
   end
 end

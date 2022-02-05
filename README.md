@@ -66,6 +66,12 @@ To get a local copy up and running follow these simple example steps.
 
 - Run ```rspec spec/name_of_test_file.rb``` to run test cases individually.
 
+Here you can see that all our test are passing:
+
+![image](https://user-images.githubusercontent.com/74506933/152637929-f70eb9ac-0a47-48f9-9091-c84c81a8ca51.png)
+
+
+
 ### API Documentation
 
 - Used Apipie for the API documentation

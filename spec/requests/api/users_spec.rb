@@ -10,8 +10,8 @@ RSpec.describe 'Api::Users', type: :request do
 
   describe 'POST /create' do
     it 'create a new user' do
-      post '/users?user_name="Donard"'
-      expect(response.body).to include('Donard')
+      post '/users?user_name=donard2'
+      expect(response.body).to include("donard2")
     end
   end
 end

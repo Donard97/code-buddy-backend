@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     render json: users, adapter: :json_api, status: :ok
   end
 
+  api :GET, '/users/login-register', 'This is to login and register using user_name'
   def login_register
     user_name = params[:user_name]
     if User.where(user_name: user_name).exists?

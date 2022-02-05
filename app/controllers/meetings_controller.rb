@@ -41,6 +41,7 @@ class MeetingsController < ApplicationController
            status: :ok
   end
 
+  api :GET, '/meetings/:meeting_id/reservations', 'To get meetings reservations'
   def reservations
     reservations = Reservation.find(meeting_id: params[:id])
     render json: reservations, adapter: :json_api, status: :ok

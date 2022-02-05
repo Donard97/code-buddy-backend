@@ -32,6 +32,7 @@ class MeetingTypesController < ApplicationController
     end
   end
 
+  api :GET, '/meeting_types/:meeting_type_id/meetings', 'To get meetings of a specific meeting type'
   def meetings
     meetings = MeetingType.find(params[:meeting_type_id]).meetings
     render json: meetings, adapter: :json_api, status: :ok

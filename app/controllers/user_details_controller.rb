@@ -26,6 +26,7 @@ class UserDetailsController < ApplicationController
     end
   end
 
+  api :GET, '/users/:user_id/meetings', 'To get meetings created by a specific user'
   def meetings
     meetings = User.find(params[:user_id]).meetings
     render json: meetings, adapter: :json_api, status: 200
